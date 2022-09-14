@@ -66,7 +66,7 @@ public class DoctorDAO {
 		Session currentSession = this.entityManager.unwrap(Session.class);
 		
 		// Deleting the object having the given primary key.
-		Query sql = currentSession.createQuery("delete from Dcotor where id = :doctorId");
+		Query sql = currentSession.createQuery("delete from Doctor where id = :doctorId");
 		sql.setParameter("doctorId", id);
 		sql.executeUpdate();
 	}
