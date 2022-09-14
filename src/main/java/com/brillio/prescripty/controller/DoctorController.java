@@ -2,7 +2,7 @@ package com.brillio.prescripty.controller;
 
 import java.util.List;
 
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,13 +64,17 @@ public class DoctorController {
 	}
 	
 	// Adding mapping for DELETE - /doctors/{id} - deletes the patient corresponding to the given id.
+	@DeleteMapping("/doctors/{id}")
 	public String deleteDoctors(@PathVariable int id) {
 		Doctor doctorToBeDeleted = this.doctorService.getById(id);
 		
 		// If the patient is not found then throwing exception.
 		if(doctorToBeDeleted == null) throw new RuntimeException("Doctor having id " + id + " not found.");
 		
-		return "Doctor deleted successfully for id: + id";
+		this.doctorService.deleteById(id);
+
+		
+		return "Doctor deleted successfully for id:" + id;
 	}
 	
 	
