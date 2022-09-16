@@ -44,7 +44,7 @@ public class AdminController {
 		
 		if(currentAdmin == null) throw new RuntimeException("User does not exists");
 		else if(!currentAdmin.getPassword().equals( login.getPassword())) throw new RuntimeException("Passwords mismatch");
-		else return new APIResponse(200, "Login Success", null);
+		else return new APIResponse(200, "Login Success", currentAdmin);
 	}
 	
 }
